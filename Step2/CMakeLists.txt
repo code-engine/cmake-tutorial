@@ -14,7 +14,6 @@ configure_file(TutorialConfig.h.in TutorialConfig.h)
 # TODO 2: Use add_subdirectory() to add MathFunctions to this project
 add_subdirectory(MathFunctions)
 
-
 # add the executable
 add_executable(Tutorial tutorial.cxx)
 
