@@ -48,7 +48,7 @@ target_include_directories(<target> [SYSTEM] [AFTER|BEFORE]
 
 https://cmake.org/cmake/help/latest/command/target_include_directories.html
 
-Example
+### Example
 
 ```cmake
 target_include_directories(Tutorial PUBLIC "${PROJECT_BINARY_DIR}" "${PROJECT_SOURCE_DIR}/MathFunctions")
@@ -73,9 +73,10 @@ Descriptions derived from links below:
 * https://leimao.github.io/blog/CMake-Public-Private-Interface/
 * https://discourse.cmake.org/t/clarification-on-public-private-with-target-source-group/7845
 
+
 ## Variables
 
-### Project Variables
+### Project Variables
 
 ```cmake
 ${PROJECT_BINARY_DIR}
@@ -89,7 +90,7 @@ ${PROJECT_SOURCE_DIR}
 
 This is the source directory of the last call to the project() command made in the current directory scope or one of its parents. Note, it is not affected by calls to `project()` made within a child directory scope (i.e. from within a call to `add_subdirectory()` from the current scope).
 
-### Version Variables
+### Version Variables
 
 Derived from the following command:
 
