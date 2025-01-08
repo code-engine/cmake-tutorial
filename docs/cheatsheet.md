@@ -19,6 +19,35 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 ```
 
+## Add a subdirectory
+
+```cmake
+add_subdirectory(MathFunctions)
+```
+
+* Copies a subdirectory into build directory.
+* Expects subdirectory to contain a `CMakeLists.txt`.
+
+## Link library to executable
+
+```cmake
+target_link_libraries(Tutorial PUBLIC MathFunctions)
+```
+
+## Include directories
+
+https://cmake.org/cmake/help/latest/command/target_include_directories.html
+
+```cmake
+target_include_directories(<target> [SYSTEM] [AFTER|BEFORE]
+  <INTERFACE|PUBLIC|PRIVATE> [items1...]
+  [<INTERFACE|PUBLIC|PRIVATE> [items2...] ...])
+```
+
+```cmake
+target_include_directories(Tutorial PUBLIC "${PROJECT_BINARY_DIR}" "${PROJECT_SOURCE_DIR}/MathFunctions")
+```
+
 ## Configure File
 
 ```cmake
@@ -26,6 +55,17 @@ configure_file(TutorialConfig.h.in TutorialConfig.h)
 ```
 
 * Copy file and apply transformations to it.
+
+## File Sets
+
+* `PRIVATE` only used when building this target. All the include directories following `PRIVATE` will be used for the current target only, i.e., appending the directories to `INCLUDE_DIRECTORIES`.
+* `INTERFACE` only used by things that consume this. All the include directories following `INTERFACE` will NOT be used for the current target but will be accessible for the other targets that have dependencies on the current target, i.e., appending the directories to `INTERFACE_INCLUDE_DIRECTORIES`.
+* `PUBLIC` merges both of the above together. All the directories following PUBLIC will be used for the current target and the other targets that have dependencies on the current target, i.e., appending the directories to `INCLUDE_DIRECTORIES` and `INTERFACE_INCLUDE_DIRECTORIES`.
+
+Descriptions derived from links below:
+
+* https://leimao.github.io/blog/CMake-Public-Private-Interface/
+* https://discourse.cmake.org/t/clarification-on-public-private-with-target-source-group/7845
 
 ## Variables
 
