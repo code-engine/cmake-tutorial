@@ -36,13 +36,19 @@ target_link_libraries(Tutorial PUBLIC MathFunctions)
 
 ## Include directories
 
-https://cmake.org/cmake/help/latest/command/target_include_directories.html
+Specifies include directories to use when compiling a given target.
 
 ```cmake
 target_include_directories(<target> [SYSTEM] [AFTER|BEFORE]
   <INTERFACE|PUBLIC|PRIVATE> [items1...]
   [<INTERFACE|PUBLIC|PRIVATE> [items2...] ...])
 ```
+
+### Links
+
+https://cmake.org/cmake/help/latest/command/target_include_directories.html
+
+Example
 
 ```cmake
 target_include_directories(Tutorial PUBLIC "${PROJECT_BINARY_DIR}" "${PROJECT_SOURCE_DIR}/MathFunctions")
