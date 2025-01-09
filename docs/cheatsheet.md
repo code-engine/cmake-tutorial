@@ -102,6 +102,13 @@ if (USE_MYMATH)
 endif()
 ```
 
+The target_compile_definitions can use a quoted or unquoted string:
+
+```cmake
+target_compile_definitions(MathFunctions PRIVATE USE_MYMATH)
+target_compile_definitions(MathFunctions PRIVATE "USE_MYMATH")
+```
+
 In code
 
 ```cpp
