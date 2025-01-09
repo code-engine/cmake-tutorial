@@ -54,6 +54,15 @@ https://cmake.org/cmake/help/latest/command/target_include_directories.html
 target_include_directories(Tutorial PUBLIC "${PROJECT_BINARY_DIR}" "${PROJECT_SOURCE_DIR}/MathFunctions")
 ```
 
+### Add a Library
+
+```cmake
+add_library(MathFunctions MathFunctions.cxx mysqrt.cxx)
+```
+
+* Add a library to the project using the specified source files.
+* Needs to be added to library `CMakeLists.txt`. It is the min requirement for a lib.
+
 ## Configure File
 
 ```cmake
