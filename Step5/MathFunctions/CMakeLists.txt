@@ -12,9 +12,7 @@ if (USE_MYMATH)
   target_compile_definitions(MathFunctions PRIVATE "USE_MYMATH")
 
   # library that just does sqrt
-  add_library(SqrtLibrary STATIC
-              mysqrt.cxx
-              )
+  add_library(SqrtLibrary STATIC mysqrt.cxx)
 
   # link SqrtLibrary to tutorial_compiler_flags
   target_link_libraries(SqrtLibrary PUBLIC tutorial_compiler_flags)
@@ -30,5 +28,16 @@ target_link_libraries(MathFunctions PUBLIC tutorial_compiler_flags)
 # Then install the installable libraries to the lib folder.
 # Hint: Use the TARGETS and DESTINATION parameters
 
+set(installable_libs MathFunctions tutorial_compiler_flags)
+if(TARGET SqrtLibrary)
+  list(APPEND installable_libs SqrtLibrary)
+endif()
+
+# /usr/local/lib from CMAKE_INSTALL_PREFIX
+install(TARGETS ${installable_libs} DESTINATION lib)
+
 # TODO 2: Install the library headers to the include folder.
 # Hint: Use the FILES and DESTINATION parameters
+
+# /usr/local/include
+install(FILES MathFunctions.h DESTINATION include)

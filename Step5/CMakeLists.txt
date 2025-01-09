@@ -30,12 +30,15 @@ target_link_libraries(Tutorial PUBLIC MathFunctions tutorial_compiler_flags)
 
 # add the binary tree to the search path for include files
 # so that we will find TutorialConfig.h
-target_include_directories(Tutorial PUBLIC
-                           "${PROJECT_BINARY_DIR}"
-                           )
+target_include_directories(Tutorial PUBLIC "${PROJECT_BINARY_DIR}")
 
 # TODO 3: Install Tutorial in the bin directory
 # Hint: Use the TARGETS and DESTINATION parameters
+
+# /usr/local/bin from CMAKE_INSTALL_PREFIX
+install(TARGETS Tutorial DESTINATION bin)
+# /usr/local/include from CMAKE_INSTALL_PREFIX
+install(FILES "${PROJECT_BINARY_DIR}/TutorialConfig.h" DESTINATION include)
 
 # TODO 4: Install TutorialConfig.h to the include directory
 # Hint: Use the FILES and DESTINATION parameters
