@@ -82,6 +82,43 @@ Descriptions derived from links below:
 * https://leimao.github.io/blog/CMake-Public-Private-Interface/
 * https://discourse.cmake.org/t/clarification-on-public-private-with-target-source-group/7845
 
+## Options
+
+Setting options on the command line
+
+```bash
+cmake ../ -DUSE_MYMATH=OFF
+```
+
+Use in CMake files
+
+```cmake
+option(USE_MYMATH "Use tutorial provided math implementation" ON)
+
+if (USE_MYMATH)
+  target_compile_definitions(MathFunctions PRIVATE "USE_MYMATH")
+  add_library(SqrtLibrary STATIC mysqrt.cxx)
+  target_link_libraries(MathFunctions PRIVATE SqrtLibrary)
+endif()
+```
+
+In code
+
+```cpp
+#ifdef USE_MYMATH
+  ...
+#endif
+```
+
+List options
+
+```bash
+cmake -LAH
+```
+
+* `-L`: list variables
+* `-A`: include advanced variables.
+* `-H`: include the help strings as `// My help` above each setting
 
 ## Variables
 
