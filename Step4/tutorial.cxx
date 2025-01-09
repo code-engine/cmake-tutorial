@@ -2,6 +2,7 @@
 #include <cmath>
 #include <iostream>
 #include <string>
+#include <stdio.h>
 
 #include "MathFunctions.h"
 #include "TutorialConfig.h"
